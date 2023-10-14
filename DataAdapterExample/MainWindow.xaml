@@ -1,0 +1,33 @@
+﻿<Window x:Class="DataAdapterExample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataAdapterExample"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" FontSize="20">
+    <StackPanel Orientation="Vertical">
+        <!-- действия, выполняемые в программе-->
+        <StackPanel Orientation="Horizontal">
+            <TabControl>
+                <TabItem Header="Full Fill and Update">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Actions: "  Margin="10"/>
+                        <Button x:Name="fillBtn" Content="Fill" Width="100" Margin="10" Click="fillBtn_Click"/>
+                        <Button x:Name="updateBtn" Content="Update" Width="100" Margin="10" Click="updateBtn_Click"/>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Custom Fill">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Run: "  Margin="10"/>
+                        <TextBox x:Name="TextBoxQuery" VerticalAlignment="Center" Width="400"/>
+                        <Button x:Name="fillButton" Content="Fill" Width="100" Margin="10" Click="customFillBtn_Click"
+                                IsEnabled="{Binding ElementName=TextBoxQuery, Path=Text.Length}"/>
+                    </StackPanel>
+                </TabItem>
+            </TabControl>
+        </StackPanel>
+        <!-- вывод результатов -->
+        <DataGrid x:Name="dataGrid"  Height="900"/>
+    </StackPanel>
+</Window>
